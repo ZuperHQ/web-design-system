@@ -106,7 +106,7 @@ The Details Center Panel is a `flex-col` container that anchors the centre of a 
     <!-- Navigate-on-click section header -->
     <div class="space-y-2">
       <button type="button" class="group/sec p-1.5 flex items-center gap-1.5 text-lg font-medium leading-tight transition-colors rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-800 text-gray-700">
-        <i class="ti ti-pulse"></i>
+        <i class="ti ti-activity"></i>
         Activity
         <i class="ti ti-chevron-right text-lg transition-transform duration-200 ease-in-out group-hover/sec:translate-x-0.5"></i>
       </button>
