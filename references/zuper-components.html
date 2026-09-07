@@ -30,6 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <style>
+    /* design-tokens:start */
     body { font-family: 'Inter', sans-serif; }
     .bg-primary { background-color: #1E293B; }
     .text-primary { color: #1E293B; }
@@ -52,9 +53,11 @@
       background-size: 200px 100%;
       animation: shimmer 1.5s infinite linear;
     }
+    /* design-tokens:end */
     #sidebar { position: fixed; top: 0; left: 0; width: 15rem; height: 100vh; z-index: 10; }
     #main { margin-left: 15rem; }
     .state-label { margin-top: 4px; font-size: 10px; color: #9ca3af; text-align: center; }
+    /* design-tokens:start */
     .expansion-chevron { transition: transform 200ms ease; }
     .expansion-content { overflow: hidden; max-height: 0; transition: max-height 250ms ease; }
     .expansion-content.open { max-height: 600px; }
@@ -72,6 +75,7 @@
     }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     .scrollbar-hide::-webkit-scrollbar { display: none; }
+    /* design-tokens:end */
     .drawer-demo-closed { transform: translateX(calc(100% + 12px)); }
   </style>
 </head>
