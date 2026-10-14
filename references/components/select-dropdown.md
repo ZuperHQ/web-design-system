@@ -31,7 +31,7 @@ The Select / Dropdown renders as a rounded trigger button (`h-9 rounded-lg borde
 | Variant | Description |
 |---------|-------------|
 | single-select | Default variant; exactly one value is active at a time, confirmed by a `ti ti-check` icon beside the selected option. Use when only one value is semantically valid. |
-| multi-select | Multiple options can be checked simultaneously; the trigger summarises the count (e.g., "3 selected") when options overflow the trigger width. Use for assignees, tags, or any field that is logically a set. |
+| multi-select | Multiple options can be checked simultaneously, each confirmed by a `ti ti-check`. The panel adds a **Selected:** list (each row removable with `ti ti-x`) and an **Update** button that commits the set; the trigger summarises the count (e.g., "3 selected") when options overflow the trigger width. Use for assignees, skills, tags, or any field that is logically a set. |
 | searchable | An inline `<input type="text" placeholder="Search">` is rendered at the top of the open panel, filtering the visible options in real time. Use when the list exceeds roughly 15 items and users benefit from type-ahead filtering. |
 
 ## HTML Structure
@@ -62,9 +62,61 @@ The Select / Dropdown renders as a rounded trigger button (`h-9 rounded-lg borde
       <span class="truncate text-base">Medium</span>
     </button>
     <!-- Hovered option -->
-    <button class="flex gap-2 items-center justify-between bg-gray-100 rounded-lg cursor-pointer w-full px-2 py-1 text-left text-gray-600">
+    <button class="flex gap-2 items-center justify-between bg-gray-100 rounded-lg cursor-pointer w-full px-2 py-1 text-left text-gray-500">
       <span class="truncate text-base">High</span>
     </button>
+  </div>
+</div>
+
+<!-- Multi-select panel (searchable) — e.g. Skills in the details center overview -->
+<div class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col" style="min-width: 240px; max-width: 320px;">
+  <!-- Search header -->
+  <div class="relative border-b border-gray-200 flex-shrink-0">
+    <i class="ti ti-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-base pointer-events-none"></i>
+    <input type="text" placeholder="Search" class="w-full pl-8 pr-8 py-1.5 text-base text-gray-700 placeholder-gray-400 focus:outline-none">
+  </div>
+  <!-- Options: selected = text-gray-800 + ti-check, unselected = text-gray-500, hover = bg-gray-100 -->
+  <div class="overflow-y-auto zuper-scrollbar p-1" style="max-height: 15rem;">
+    <button type="button" class="cursor-pointer gap-2 flex items-center justify-between hover:bg-gray-100 rounded-lg w-full px-2 py-1.5 text-left text-gray-800">
+      <span class="truncate text-base leading-tight">Installation</span>
+      <i class="ti ti-check text-lg flex-shrink-0"></i>
+    </button>
+    <button type="button" class="cursor-pointer gap-2 flex items-center justify-between hover:bg-gray-100 rounded-lg w-full px-2 py-1.5 text-left text-gray-500">
+      <span class="truncate text-base leading-tight">Kitchen floor cleaning</span>
+    </button>
+    <button type="button" class="cursor-pointer gap-2 flex items-center justify-between hover:bg-gray-100 rounded-lg w-full px-2 py-1.5 text-left text-gray-800">
+      <span class="truncate text-base leading-tight">Lawn Cleaning</span>
+      <i class="ti ti-check text-lg flex-shrink-0"></i>
+    </button>
+    <!-- Hovered unselected option: bg-gray-100, text colour unchanged -->
+    <button type="button" class="cursor-pointer gap-2 flex items-center justify-between bg-gray-100 rounded-lg w-full px-2 py-1.5 text-left text-gray-500">
+      <span class="truncate text-base leading-tight">Kitchen Installation</span>
+    </button>
+    <button type="button" class="cursor-pointer gap-2 flex items-center justify-between hover:bg-gray-100 rounded-lg w-full px-2 py-1.5 text-left text-gray-500">
+      <span class="truncate text-base leading-tight">Parking systems installation</span>
+    </button>
+  </div>
+  <!-- Selected list (shown when at least one item is selected and search is empty) -->
+  <div class="px-3 py-2 flex items-center justify-start border-t border-gray-200">
+    <span class="text-base font-medium truncate leading-tight">Selected:</span>
+  </div>
+  <div class="overflow-y-auto zuper-scrollbar px-1 pb-2 mb-0.5" style="max-height: 9rem;">
+    <div class="flex gap-2 items-center leading-tight justify-between hover:bg-gray-100 w-full px-3 py-1.5 text-left rounded-md text-gray-700">
+      <span class="truncate text-base">Installation</span>
+      <button type="button" title="Remove" class="flex items-center h-5 w-5 justify-center flex-shrink-0 text-gray-400 hover:text-gray-600 rounded-md p-1 hover:bg-gray-200">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+    <div class="flex gap-2 items-center leading-tight justify-between hover:bg-gray-100 w-full px-3 py-1.5 text-left rounded-md text-gray-700">
+      <span class="truncate text-base">Lawn Cleaning</span>
+      <button type="button" title="Remove" class="flex items-center h-5 w-5 justify-center flex-shrink-0 text-gray-400 hover:text-gray-600 rounded-md p-1 hover:bg-gray-200">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Commit footer -->
+  <div class="p-2 border-t border-gray-200">
+    <button type="button" class="w-full px-3 py-1.5 rounded-md text-base text-white bg-primary hover:opacity-90">Update</button>
   </div>
 </div>
 
@@ -99,7 +151,8 @@ The Select / Dropdown renders as a rounded trigger button (`h-9 rounded-lg borde
 1. **Trigger height is always h-9** — The trigger must remain `h-9` (36 px) to align with Text Input and other form controls on the same row; never adjust height per variant.
 2. **Panel anchors with mt-0.5** — The floating panel uses `mt-0.5` offset so there is a 2 px visual gap between the trigger bottom border and the panel top border, preventing the borders from merging.
 3. **Option rows use py-1 px-2** — All option buttons use `px-2 py-1` padding so touch targets remain at least 32 px tall and text aligns with the trigger label's left edge.
-4. **Selected state uses text-gray-800 + ti-check; unselected uses text-gray-500** — This two-tone system creates a clear visual hierarchy in the list without relying solely on a background fill.
+4. **Selected state uses text-gray-800 + ti-check; unselected uses text-gray-500; hover adds bg-gray-100 only** — This two-tone system creates a clear visual hierarchy in the list without relying solely on a background fill. Hover never changes the option's text colour, so selected and unselected items stay distinguishable while the pointer is over them. The same rules apply to single-select and multi-select.
+6. **Multi-select anatomy** — Options use `px-2 py-1.5 rounded-lg` with a `ti ti-check text-lg` on selected rows. Below the list, when at least one item is selected and the search is empty, show a `border-t border-gray-200` **Selected:** header (`text-base font-medium`) followed by removable rows (`text-gray-700`, `hover:bg-gray-100`, remove button `text-gray-400 hover:text-gray-600 hover:bg-gray-200`). End with a `p-2 border-t border-gray-200` footer holding a full-width `bg-primary` **Update** button; changes apply only when it is clicked.
 5. **Error validation targets the trigger border only** — Replace `border-border` with `border-red-500` on the trigger div; do not change the panel or option styles, as the error state belongs to the field, not the options.
 
 ## Accessibility

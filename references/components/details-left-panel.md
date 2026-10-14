@@ -111,7 +111,7 @@ The Details Left Panel is a `25rem`-wide vertical container that anchors the lef
     <div class="bg-white mt-2 group">
       <!-- Accordion header: sticky within scroll container -->
       <div class="h-9 gap-2 flex py-1 justify-between items-center w-full bg-white sticky top-0 z-10">
-        <button type="button" class="px-1 pr-1.5 py-1.5 flex items-center gap-x-1 hover:bg-gray-100 text-gray-700 rounded-lg focus:outline-none" aria-expanded="true">
+        <button type="button" class="px-1 pr-1.5 py-1.5 flex items-center gap-x-1 hover:bg-gray-100 hover:text-gray-800 text-gray-700 rounded-lg focus:outline-none" aria-expanded="true">
           <i class="ti ti-chevron-right" style="transform:rotate(90deg)"></i>
           <span class="text-base font-medium leading-tight">Job Details</span>
         </button>
@@ -173,7 +173,7 @@ The Details Left Panel is a `25rem`-wide vertical container that anchors the lef
     <!-- Related records accordion section -->
     <div class="bg-white group">
       <div class="h-9 py-1 flex items-center justify-between w-full bg-white sticky top-0 z-10">
-        <button type="button" class="px-1 pr-1.5 py-1.5 flex items-center gap-x-1 hover:bg-gray-100 text-gray-700 rounded-lg focus:outline-none" aria-expanded="true">
+        <button type="button" class="px-1 pr-1.5 py-1.5 flex items-center gap-x-1 hover:bg-gray-100 hover:text-gray-800 text-gray-700 rounded-lg focus:outline-none" aria-expanded="true">
           <i class="ti ti-chevron-right" style="transform:rotate(90deg)"></i>
           <span class="text-base font-medium leading-tight truncate">Properties (1)</span>
         </button>
@@ -221,7 +221,7 @@ The Details Left Panel is a `25rem`-wide vertical container that anchors the lef
 ## Patterns & Rules
 
 1. **5-column field grid** — Label columns always span 2 of 5 (`col-span-2`) and value columns always span 3 of 5 (`col-span-3`). Do not vary this ratio within a single accordion body; consistent column alignment makes the panel scannable.
-2. **Accordion chevron rotation** — An expanded section rotates the `ti-chevron-right` icon 90 degrees via inline `transform: rotate(90deg)`. Collapsed sections have no rotation. Do not swap icon glyphs; use transform only.
+2. **Accordion chevron rotation** — An expanded section rotates the `ti-chevron-right` icon 90 degrees via inline `transform: rotate(90deg)`. Collapsed sections have no rotation. Do not swap icon glyphs; use transform only. The header button text is `text-gray-700` when expanded and `text-gray-500` when collapsed, with `hover:bg-gray-100 hover:text-gray-800` in both states.
 3. **Inline field editing** — Individual field values show a `ti-pencil` button on `group-hover/field`. Section-level editing uses a larger pencil (`w-7 h-7`) on `group-hover` of the accordion container. Both use `opacity-0 → opacity-100 transition-opacity` rather than `display:none` to keep layout stable.
 4. **Avatar initials** — The record avatar is a circular `span` (`rounded-full`) at `3.75rem × 3.75rem`, not an `img` tag, so it gracefully renders initials when no photo is available. The cover-image variant supplements this; it does not replace the avatar.
 5. **Related record cards** — Related records render as full-width `button` elements with `rounded-lg border border-gray-200 bg-gray-50` so they are keyboard-navigable and look distinct from field rows without requiring a separate component.

@@ -1,7 +1,7 @@
 ---
 component: Badges & Tags
 category: Data Display
-variants: [status-badge, priority-badge, count-badge, tag, chip]
+variants: [status-badge, priority-badge, count-badge, inline-count, tag, chip]
 related: [cards, tables]
 ---
 
@@ -11,13 +11,14 @@ related: [cards, tables]
 
 ## Overview
 
-Badges and tags are compact inline components rendered as pill or rounded-rectangle shapes with color-coded backgrounds, borders, and text to convey meaning. They occupy three distinct roles in the design system: status/priority badges signal workflow state or urgency using semantic color palettes, count badges surface numeric quantities in a neutral style, and tags/chips label entities with removable categorical identifiers. All variants are non-interactive by default, though tags support an optional dismiss action.
+Badges and tags are compact inline components rendered as pill or rounded-rectangle shapes with color-coded backgrounds, borders, and text to convey meaning. They occupy three distinct roles in the design system: status/priority badges signal workflow state or urgency using semantic color palettes, count badges and inline counts surface numeric quantities in a neutral style, and tags/chips label entities with removable categorical identifiers. All variants are non-interactive by default, though tags support an optional dismiss action.
 
 ## When to Use
 
 - Display the current workflow status of a record (e.g., Active, Pending, Overdue, Draft) inline within a table row, card, or detail panel.
 - Indicate priority level (Critical, High, Medium, Low) on a job or task so users can triage at a glance.
 - Show a count of associated items (tasks completed, unread messages, related records) next to a label or heading.
+- Show the number of items inside a collapsible section (e.g., "Assigned To (7)" in the details sidebar association panel) using the inline count, without adding a boxed element to the header.
 - Render a flat list of categorical labels — such as job types or skill tags — on a record where users may need to add or remove individual labels.
 - Summarize overflow quantities using the "99+" capped count badge when an exact number would be too long.
 
@@ -34,6 +35,7 @@ Badges and tags are compact inline components rendered as pill or rounded-rectan
 | status-badge | Use when communicating workflow state (Active, Pending, Overdue, Draft); color encodes meaning — green for success, yellow for warning, red for danger, gray for neutral. |
 | priority-badge | Use when communicating urgency level (Critical, High, Medium, Low); shares the same visual structure as status-badge but maps to a priority scale — red/orange/yellow/gray. |
 | count-badge | Use when displaying a numeric quantity beside a label; intentionally neutral (gray border, gray-50 background) so it does not compete with status color. |
+| inline-count | Use when a count follows a section or accordion title (e.g., association panel headers); unboxed muted text in parentheses so it reads as part of the title, not as a separate element. |
 | tag | Use when displaying static categorical labels on a record where removal is not needed; rendered as a fixed-height chip with truncation. |
 | chip | Use when a categorical label must be removable by the user; identical to tag but includes a dismiss icon (ti-x) and a hover state to signal interactivity. |
 
@@ -75,6 +77,14 @@ Badges and tags are compact inline components rendered as pill or rounded-rectan
   99+
 </span>
 
+<!-- Inline Count (association panel section header) -->
+<!-- The parent's space-x-1 overrides ml-1.5 in Tailwind v3, so the rendered gap is 4px. Keep both classes to match the app. -->
+<button type="button" class="min-w-0 flex items-center space-x-1 pl-1 pr-1.5 py-1.5 rounded-lg hover:bg-gray-100 hover:text-gray-700 focus:outline-hidden text-left text-gray-700">
+  <i class="ti ti-chevron-right flex-shrink-0"></i>
+  <span class="text-base font-medium leading-tight truncate">Assigned To</span>
+  <span class="ml-1.5 text-md text-gray-500 shrink-0">(7)</span>
+</button>
+
 <!-- Tag (static, no dismiss) -->
 <span class="inline-flex items-center justify-center border border-gray-200 font-medium rounded-md px-2 h-6 min-w-6 gap-1.5 text-sm shrink-0 bg-gray-100 text-gray-700" title="Installation">
   <span class="truncate leading-tight max-w-24">Installation</span>
@@ -94,6 +104,7 @@ Badges and tags are compact inline components rendered as pill or rounded-rectan
 - Match the color palette to semantic meaning: green for success/active, yellow for warning/medium, red for danger/critical/overdue, orange for high priority, gray for neutral/draft/low.
 - Use `cursor-default` on status and priority badges to signal they are non-interactive.
 - Apply `truncate` and `max-w-24` on tag/chip inner text spans to prevent overflow in constrained layouts.
+- Keep the inline count `shrink-0` and the title `truncate` so long section titles ellipsize while the count stays fully visible.
 - Cap count badges at "99+" when the number exceeds two digits to avoid layout disruption.
 - Always provide a `title` attribute on tag and chip components so the full label is accessible on hover when the text is truncated.
 
@@ -111,7 +122,8 @@ Badges and tags are compact inline components rendered as pill or rounded-rectan
 2. **Count badge neutrality** — Count badges intentionally use a neutral palette (`bg-gray-50`, `border-border`, `text-gray-700`) regardless of the value they display. If the count itself carries urgency, pair it with a separate status badge rather than recoloring the count badge.
 3. **Tag truncation ceiling** — The inner text span of a tag or chip must carry `max-w-24` to cap display at approximately 96px. Longer labels should either be abbreviated or use a tooltip; never allow the chip to grow unbounded in flex containers.
 4. **Dismiss affordance only on chips** — The `ti-x` dismiss icon and `hover:bg-gray-200` hover state are exclusive to removable chips. Static tags must not include these styles, as hover states imply interactivity to users.
-5. **Vertical rhythm** — Status and priority badges use `py-1` while count badges use `py-0.5`. Do not equalize the padding — the difference is intentional and keeps count badges visually lighter than status badges in the same row.
+5. **Inline count is plain text** — The inline count uses `text-md text-gray-500` with the number wrapped in parentheses and no border, background, or padding. It stays `text-gray-500` whether the section is expanded or collapsed; only the title color changes. Show the full, uncapped number as the app renders it today (no "99+" limit and no thousands separator), and hide the count when it is not yet known (loading) or while the layout is being customized.
+6. **Vertical rhythm** — Status and priority badges use `py-1` while count badges use `py-0.5`. Do not equalize the padding — the difference is intentional and keeps count badges visually lighter than status badges in the same row.
 
 ## Accessibility
 
