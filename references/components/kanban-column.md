@@ -70,7 +70,7 @@ The Kanban Column is a composite component built from a sticky column header and
           <span class="text-gray-500 text-md leading-tight">JOB-1234</span>
           <span class="tabular-nums text-gray-500 text-base leading-tight group-hover:opacity-0 transition-opacity duration-200">$350.00</span>
         </div>
-        <h4 class="text-gray-900 text-base truncate font-medium leading-tight">Fix HVAC Unit at Main Office</h4>
+        <h4 class="text-gray-700 group-hover:text-gray-800 transition-colors duration-200 text-base truncate font-medium leading-tight">Fix HVAC Unit at Main Office</h4>
       </div>
       <!-- Card metadata rows -->
       <div class="space-y-2 mt-2">
@@ -158,7 +158,7 @@ The Kanban Column is a composite component built from a sticky column header and
 ## Patterns & Rules
 
 1. **Status dot color** — The `w-3 h-3 rounded-full` dot in the column header must match the status color token used across the rest of the application (e.g., `bg-yellow-400` for In Progress, `bg-green-500` for Completed) to maintain cross-view consistency.
-2. **Hover reveal pattern** — The external-link button (`opacity-0 group-hover:opacity-100`) and the monetary value (`group-hover:opacity-0`) swap visibility on hover so the action button does not obscure the value at rest, while still providing quick navigation.
+2. **Hover reveal pattern** — The external-link button (`opacity-0 group-hover:opacity-100`) and the monetary value (`group-hover:opacity-0`) swap visibility on hover so the action button does not obscure the value at rest, while still providing quick navigation. The card title also darkens from `text-gray-700` to `text-gray-800` (`group-hover:text-gray-800`) to reinforce the hovered card. Never use `text-gray-900` for card titles — it is reserved for the page's single main heading, and a board renders many cards.
 3. **Overdue duration styling** — When a job's duration is past the scheduled window, apply `bg-red-100 text-red-500` to the clock icon and `text-red-500` to the duration text to signal urgency without adding a separate indicator.
 4. **Card footer separator** — Always include `border-t border-gray-100` on the footer row to visually anchor the secondary metadata (duration, notes, priority) from the primary content above.
 5. **Loading sequence** — Render shimmer cards (`animate-shimmer`) inside the real column shell (header with count badge showing a placeholder or zero) rather than a full-column skeleton, so the board layout does not shift when real data arrives.

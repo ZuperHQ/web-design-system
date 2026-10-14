@@ -11,7 +11,7 @@ related: [button]
 
 ## Overview
 
-The Icon Button is a fixed 9-unit (36 px) square button that contains a single Tabler icon centered within it. It carries a subtle border, light background, and drop shadow that match the Zuper design system's standard surface treatment, making it blend cleanly into toolbars, list rows, and detail panels while still being clearly interactive. Its primary role is to expose secondary or contextual actions — such as edit, delete, or overflow — without the visual weight of a full labeled button.
+The Icon Button is a fixed 9-unit (36 px) square button that contains a single Tabler icon centered within it. It has a subtle border and light background with no shadow, matching the Zuper design system's standard surface treatment, making it blend cleanly into toolbars, list rows, and detail panels while still being clearly interactive. Its primary role is to expose secondary or contextual actions — such as edit, delete, or overflow — without the visual weight of a full labeled button.
 
 ## When to Use
 
@@ -40,7 +40,7 @@ The Icon Button is a fixed 9-unit (36 px) square button that contains a single T
 <!-- Default variant — bordered icon button -->
 <button
   type="button"
-  class="h-9 w-9 inline-flex justify-center items-center gap-x-2 px-2 rounded-lg shadow-2xs border bg-white text-gray-600 cursor-pointer"
+  class="h-9 w-9 inline-flex justify-center items-center gap-x-2 px-2 rounded-lg border bg-white text-gray-600 cursor-pointer"
   aria-label="Edit"
 >
   <em class="ti ti-edit text-lg"></em>
@@ -49,7 +49,7 @@ The Icon Button is a fixed 9-unit (36 px) square button that contains a single T
 <!-- Default variant — disabled state -->
 <button
   type="button"
-  class="h-9 w-9 inline-flex justify-center items-center gap-x-2 px-2 rounded-lg shadow-2xs border bg-white text-gray-600 opacity-50 pointer-events-none"
+  class="h-9 w-9 inline-flex justify-center items-center gap-x-2 px-2 rounded-lg border bg-white text-gray-600 opacity-50 pointer-events-none"
   aria-label="Edit"
   disabled
 >
@@ -87,6 +87,7 @@ The Icon Button is a fixed 9-unit (36 px) square button that contains a single T
 
 ### Don't
 
+- Do not add a shadow (`shadow-2xs`, `shadow-sm`, etc.) to icon buttons — they are flat, separated from the surface by the border alone.
 - Do not omit `aria-label` — icon-only buttons are completely opaque to screen readers without it, breaking accessibility.
 - Do not use a danger variant for actions that are reversible — it trains users to expect irreversibility and erodes the signal when it matters.
 - Do not mix the default bordered variant and the ghost variant within the same toolbar group; inconsistent affordances make the hierarchy unclear.

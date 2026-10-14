@@ -40,32 +40,32 @@ The Dropdown Menu is a floating panel with a white background, subtle border (`b
 <!-- Single group -->
 <div class="select-none min-w-44 bg-white border border-gray-200 rounded-lg shadow-lg p-1 divide-y divide-gray-100">
   <div class="py-1 first:pt-0 last:pb-0 space-y-1">
-    <button type="button" class="flex gap-2 items-center hover:bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
-      <i class="text-gray-600 text-xl ti ti-clipboard-check"></i>
+    <button type="button" class="flex gap-2 items-center text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
+      <i class="text-xl ti ti-clipboard-check"></i>
       <span class="truncate text-base leading-tight">Project</span>
     </button>
-    <button type="button" class="flex gap-2 items-center hover:bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
-      <i class="text-gray-600 text-xl ti ti-briefcase"></i>
+    <button type="button" class="flex gap-2 items-center text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
+      <i class="text-xl ti ti-briefcase"></i>
       <span class="truncate text-base leading-tight">Job</span>
     </button>
   </div>
 </div>
 
-<!-- Multiple groups (with divider) — active/selected item uses bg-gray-100 and a check icon -->
+<!-- Multiple groups (with divider) — selected item uses text-gray-800 + bg-gray-100 and a trailing check icon -->
 <div class="select-none min-w-44 bg-white border border-gray-200 rounded-lg shadow-lg p-1 divide-y divide-gray-100">
   <div class="py-1 first:pt-0 last:pb-0 space-y-1">
-    <button type="button" class="flex gap-2 items-center hover:bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
-      <i class="text-gray-600 text-xl ti ti-edit"></i>
+    <button type="button" class="flex gap-2 items-center text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
+      <i class="text-xl ti ti-edit"></i>
       <span class="truncate text-base leading-tight">Edit</span>
     </button>
-    <!-- Selected state: bg-gray-100 + trailing ti-check icon -->
-    <button type="button" class="flex gap-2 items-center bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
-      <i class="text-gray-600 text-xl ti ti-eye"></i>
+    <!-- Selected state: text-gray-800 bg-gray-100 + trailing ti-check icon -->
+    <button type="button" class="flex gap-2 items-center text-gray-800 bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
+      <i class="text-xl ti ti-eye"></i>
       <span class="truncate text-base leading-tight">View</span>
-      <i class="ti ti-check text-gray-800 ml-auto text-base"></i>
+      <i class="ti ti-check ml-auto text-lg flex-shrink-0"></i>
     </button>
-    <button type="button" class="flex gap-2 items-center hover:bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
-      <i class="text-gray-600 text-xl ti ti-download"></i>
+    <button type="button" class="flex gap-2 items-center text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md w-full px-2 py-1.5 text-left cursor-pointer">
+      <i class="text-xl ti ti-download"></i>
       <span class="truncate text-base leading-tight">Export</span>
     </button>
   </div>
@@ -86,8 +86,9 @@ The Dropdown Menu is a floating panel with a white background, subtle border (`b
 - Use `select-none` on the root container to prevent text selection when the menu opens quickly after a click-hold.
 - Apply `truncate` to every label `<span>` so long action names do not overflow the `min-w-44` container.
 - Place destructive actions (Delete, Archive, Remove) in their own group at the bottom, separated by the `divide-y divide-gray-100` divider.
-- Mark the currently active item with `bg-gray-100` background and a trailing `ti ti-check` icon so users see the current state at a glance.
-- Use Tabler icons (`ti ti-*`) sized at `text-xl text-gray-600` for all leading icons to stay consistent with the rest of the design system.
+- Give every item `text-gray-600 hover:text-gray-800 hover:bg-gray-100` so the label and icon darken together on hover.
+- Mark the currently active item with `text-gray-800 bg-gray-100` and a trailing `ti ti-check` icon so users see the current state at a glance.
+- Use Tabler icons (`ti ti-*`) sized at `text-xl` for all leading icons, with no colour class of their own, so they inherit the item's text colour in every state.
 
 ### ❌ Don't
 
@@ -101,7 +102,7 @@ The Dropdown Menu is a floating panel with a white background, subtle border (`b
 
 1. **Group isolation** — Each logical group lives in its own `<div class="py-1 first:pt-0 last:pb-0 space-y-1">` child. The `divide-y divide-gray-100` on the root container automatically renders a hairline separator between groups without extra markup.
 2. **Minimum width** — The root panel carries `min-w-44` (11 rem) as the floor; it may grow wider to fit content but must never be narrower, ensuring touch targets remain comfortable.
-3. **Selected state** — An active or currently-applied item replaces `hover:bg-gray-100` with a static `bg-gray-100` and appends `<i class="ti ti-check text-gray-800 ml-auto text-base">` as a trailing indicator. Only one item per group should carry this state at a time.
+3. **Item states** — Default: `text-gray-600`. Hover: `hover:text-gray-800 hover:bg-gray-100`. Selected: replace those classes with a static `text-gray-800 bg-gray-100` and append `<i class="ti ti-check ml-auto text-lg flex-shrink-0">` as a trailing indicator. Only one item per group should carry the selected state at a time. Leading icons carry no colour class and inherit the item's colour, so they change with it. The destructive palette (`text-red-500 hover:bg-red-50`) replaces these colours on destructive items.
 4. **Icon requirement** — Every menu item must include a leading Tabler icon. Icon-free items break the visual rhythm and make scanning harder when the list grows beyond five items.
 5. **Positioning** — The menu panel is always rendered outside normal document flow (absolute or fixed) and anchored to its trigger. The component itself carries no positioning classes; the surrounding layout context controls placement.
 

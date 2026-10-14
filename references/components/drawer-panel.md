@@ -47,7 +47,7 @@ The Drawer Panel is a floating white card anchored to the right side of the view
   <!-- Header — simple (no navigation) -->
   <div class="flex items-center gap-2 px-4 py-2.5 border-b border-gray-200 min-h-[52px] flex-shrink-0">
     <i class="ti ti-clipboard-list text-xl text-gray-500 flex-shrink-0"></i>
-    <span class="flex-1 text-base font-semibold text-gray-900 truncate ml-1.5">WO-10432 — HVAC Inspection</span>
+    <span class="flex-1 text-base font-medium text-gray-800 truncate ml-1.5">WO-10432 — HVAC Inspection</span>
     <button class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 text-gray-600 flex-shrink-0" title="Open in current tab">
       <i class="ti ti-arrows-maximize text-xl"></i>
     </button>
@@ -87,7 +87,7 @@ The Drawer Panel is a floating white card anchored to the right side of the view
     </button>
     <i class="ti ti-chevron-right text-xs text-gray-400 flex-shrink-0"></i>
     <i class="ti ti-clipboard-list text-xl text-gray-500 flex-shrink-0 ml-1"></i>
-    <span class="text-base font-semibold text-gray-900 truncate whitespace-nowrap ml-1.5">WO-10432 — HVAC Inspection</span>
+    <span class="text-base font-medium text-gray-800 truncate whitespace-nowrap ml-1.5">WO-10432 — HVAC Inspection</span>
   </div>
 -->
 

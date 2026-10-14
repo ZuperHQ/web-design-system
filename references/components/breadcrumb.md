@@ -72,13 +72,13 @@ The Breadcrumb renders as a horizontal bar fixed to the top of a list or detail 
   <!-- Right-aligned action buttons -->
   <div class="flex ml-auto items-center">
     <div class="mx-2">
-      <button class="inline-flex items-center justify-center gap-1 whitespace-nowrap border border-border text-sm text-gray-600 shadow-sm outline-none cursor-pointer transition-colors w-fit hover:bg-gray-50 px-2 py-1.5 rounded-lg">
+      <button class="inline-flex items-center justify-center gap-1 whitespace-nowrap border border-border text-sm text-gray-600 outline-none cursor-pointer transition-colors w-fit hover:bg-gray-50 px-2 py-1.5 rounded-lg">
         <em class="ti ti-upload text-lg"></em>
         <span class="leading-tight text-base font-normal ml-1">Import</span>
       </button>
     </div>
     <div class="mx-2 mr-4">
-      <button class="inline-flex items-center justify-center gap-1 whitespace-nowrap border border-border text-sm text-gray-600 shadow-sm outline-none cursor-pointer transition-colors w-fit hover:bg-gray-50 px-2 py-1.5 rounded-lg">
+      <button class="inline-flex items-center justify-center gap-1 whitespace-nowrap border border-border text-sm text-gray-600 outline-none cursor-pointer transition-colors w-fit hover:bg-gray-50 px-2 py-1.5 rounded-lg">
         <em class="ti ti-plus text-lg"></em>
         <span class="leading-tight text-base font-normal ml-1">Create Work Order</span>
         <i class="ti ti-chevron-down text-base ml-1"></i>

@@ -58,25 +58,25 @@ Buttons in the Zuper design system are built on native `<button>` elements and s
 </button>
 
 <!-- Standard Button — Primary -->
-<button class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 shadow-sm outline-none cursor-pointer transition-colors w-fit disabled:opacity-50 disabled:pointer-events-none hover:bg-primary px-2 py-1.5 pr-2 bg-primary text-white border-transparent font-medium">
+<button class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 outline-none cursor-pointer transition-colors w-fit disabled:opacity-50 disabled:pointer-events-none hover:bg-primary px-2 py-1.5 pr-2 bg-primary text-white border-transparent font-medium">
   <em class="ti ti-plus text-lg"></em>
   <span class="leading-tight text-base font-normal">Label</span>
 </button>
 
 <!-- Standard Button — Primary Loading -->
-<button class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 shadow-sm outline-none cursor-pointer transition-colors w-fit disabled:opacity-50 disabled:pointer-events-none hover:bg-primary px-2 py-1.5 pr-2 bg-primary text-white border-transparent font-medium">
+<button class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 outline-none cursor-pointer transition-colors w-fit disabled:opacity-50 disabled:pointer-events-none hover:bg-primary px-2 py-1.5 pr-2 bg-primary text-white border-transparent font-medium">
   <em class="ti ti-loader-2 animate-spin text-lg"></em>
   <span class="leading-tight text-base font-normal">Label</span>
 </button>
 
 <!-- Standard Button — Primary Disabled -->
-<button class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 shadow-sm outline-none cursor-pointer transition-colors w-fit disabled:opacity-50 disabled:pointer-events-none hover:bg-primary px-2 py-1.5 pr-2 bg-primary text-white border-transparent font-medium disabled" disabled>
+<button class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 outline-none cursor-pointer transition-colors w-fit disabled:opacity-50 disabled:pointer-events-none hover:bg-primary px-2 py-1.5 pr-2 bg-primary text-white border-transparent font-medium disabled" disabled>
   <em class="ti ti-plus text-lg"></em>
   <span class="leading-tight text-base font-normal">Label</span>
 </button>
 
 <!-- Standard Button — Secondary -->
-<button class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 shadow-sm outline-none cursor-pointer transition-colors w-fit hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none px-2 py-1.5 pr-2">
+<button class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 outline-none cursor-pointer transition-colors w-fit hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none px-2 py-1.5 pr-2">
   <em class="ti ti-plus text-lg"></em>
   <span class="leading-tight text-base font-normal">Label</span>
 </button>
@@ -93,7 +93,7 @@ Buttons in the Zuper design system are built on native `<button>` elements and s
 
 ### Do
 
-- Apply the full standard-button Tailwind class set (`inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 shadow-sm outline-none cursor-pointer transition-colors w-fit`) to every standard-weight button so border, radius, and flex behaviour stay consistent — there is no shared base class to inherit it from.
+- Apply the full standard-button Tailwind class set (`inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-border text-sm text-gray-600 outline-none cursor-pointer transition-colors w-fit`) to every standard-weight button so border, radius, and flex behaviour stay consistent — there is no shared base class to inherit it from.
 - Apply `disabled` both as a CSS class and as the native HTML `disabled` attribute so the button is excluded from both visual interaction and keyboard focus.
 - Show a `ti-loader-2 animate-spin` icon in place of the action icon during async operations to communicate progress without removing the button.
 - Keep button labels short (one to three words) so the action is scannable at a glance.
@@ -101,6 +101,7 @@ Buttons in the Zuper design system are built on native `<button>` elements and s
 
 ### Don't
 
+- Do not add a shadow (`shadow-sm`, `shadow-2xs`, etc.) to standard buttons — they are flat, separated from the surface by the border alone.
 - Do not use `pointer-events-none` alone to disable a button — the native `disabled` attribute must also be set, otherwise the element remains in the tab order and is announced as interactive by screen readers.
 - Do not mix ghost and standard variants in the same toolbar for actions of equal importance — inconsistent weight sends a false hierarchy signal to the user.
 - Do not place more than one primary (`bg-primary`) button in a single view region, as competing primaries eliminate the visual hierarchy that guides user attention.

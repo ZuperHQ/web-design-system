@@ -42,7 +42,7 @@ The Expansion Panel renders as a bordered container with a chevron-toggle header
     <!-- Panel (open state) -->
     <div class="bg-white group expansion-panel-item">
       <div class="h-9 py-1 flex items-center justify-between w-full bg-white select-none">
-        <button type="button" class="expansion-toggle min-w-0 flex items-center space-x-1 pl-1 pr-1.5 py-1.5 rounded-lg hover:bg-gray-100 hover:text-gray-700 focus:outline-none text-left text-gray-700">
+        <button type="button" class="expansion-toggle min-w-0 flex items-center space-x-1 pl-1 pr-1.5 py-1.5 rounded-lg hover:bg-gray-100 hover:text-gray-800 focus:outline-none text-left text-gray-700">
           <i class="ti ti-chevron-right flex-shrink-0 expansion-chevron" style="transform: rotate(90deg) translateY(0.5px) translateX(-1px);"></i>
           <span class="text-base font-medium leading-tight truncate">Section Title</span>
           <!-- Optional item count badge -->
@@ -66,7 +66,7 @@ The Expansion Panel renders as a bordered container with a chevron-toggle header
     <!-- Panel (closed state — no "open" class on expansion-content) -->
     <div class="bg-white group expansion-panel-item">
       <div class="h-9 py-1 flex items-center justify-between w-full bg-white select-none">
-        <button type="button" class="expansion-toggle min-w-0 flex items-center space-x-1 pl-1 pr-1.5 py-1.5 rounded-lg hover:bg-gray-100 hover:text-gray-700 focus:outline-none text-left text-gray-700">
+        <button type="button" class="expansion-toggle min-w-0 flex items-center space-x-1 pl-1 pr-1.5 py-1.5 rounded-lg hover:bg-gray-100 hover:text-gray-800 focus:outline-none text-left text-gray-500">
           <i class="ti ti-chevron-right flex-shrink-0 expansion-chevron"></i>
           <span class="text-base font-medium leading-tight truncate">Section Title</span>
         </button>
@@ -109,9 +109,10 @@ The Expansion Panel renders as a bordered container with a chevron-toggle header
 
 1. **Open/closed state via class** — Add the `open` class to `expansion-content` to expand the panel; remove it to collapse. The CSS transition animates `max-height` between `0` and `600px` over 250 ms, so content taller than 600 px will be clipped.
 2. **Chevron rotation signals state** — When open, `expansion-chevron` is rotated 90 degrees via an inline `transform` style applied by the toggle handler; when closed the transform is cleared, pointing the chevron right.
-3. **Group hover for contextual actions** — Header action buttons use `opacity-0 group-hover:opacity-100` so they are invisible at rest and revealed on hover. The `group` class must be on `expansion-panel-item`, not on the header row.
-4. **Container handles visual grouping** — The outer `border border-border rounded-lg overflow-hidden` wrapper provides the card boundary; individual panels carry no border of their own, keeping the stacked layout seamless.
-5. **Empty state is required** — When a panel section contains no items, render a styled empty-state row (e.g. `bg-gray-50 rounded-lg` with a `text-gray-500` message) inside `expansion-content` so users know the section loaded correctly rather than suspecting a rendering error.
+3. **Header colour signals state** — The `expansion-toggle` text (label and chevron) is `text-gray-700` when open and `text-gray-500` when closed, so collapsed sections recede and open ones read as active. Both states share `hover:bg-gray-100 hover:text-gray-800`. Swap the two classes together with the `open` class and `aria-expanded`.
+4. **Group hover for contextual actions** — Header action buttons use `opacity-0 group-hover:opacity-100` so they are invisible at rest and revealed on hover. The `group` class must be on `expansion-panel-item`, not on the header row.
+5. **Container handles visual grouping** — The outer `border border-border rounded-lg overflow-hidden` wrapper provides the card boundary; individual panels carry no border of their own, keeping the stacked layout seamless.
+6. **Empty state is required** — When a panel section contains no items, render a styled empty-state row (e.g. `bg-gray-50 rounded-lg` with a `text-gray-500` message) inside `expansion-content` so users know the section loaded correctly rather than suspecting a rendering error.
 
 ## Accessibility
 
